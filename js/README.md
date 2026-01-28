@@ -31,6 +31,7 @@ kintone の「JavaScript / CSS カスタマイズ」にそのまま登録して�
 | `label-navigator.js`            | ラベルから“目次”を生成     | 項目ジャンプ      |
 | `index-quick-switch-buttons.js` | 一覧ビュー切替ボタン       | 現場向けナビ設定    |
 | `sidebar-closed.js`             | サイドバーを自動で閉じる     | 入力集中モード     |
+| `group-navigator.js`            | グループから“目次”を生成　　| 項目ジャンプ      |
 
 ### 🟩 データ品質・バリデーション（Validation）
 
@@ -240,6 +241,27 @@ overwrite: true
 
 ### 🔹 label-navigator.js
 フォームのラベル（項目名）から“ミニ目次”を生成するUI
+
+#### 📌 使い所
+- 長いフォームでスクロールが大変
+- 「基本情報」→「詳細」などに即ジャンプしたい
+- 編集画面でも迷いたくない
+
+#### 🛠 CONFIG例
+```js
+items: [
+  { text: '基本情報', level: 0 },
+  { text: '顧客情報', level: 1 },
+  { text: '詳細メモ', level: 0 }
+],
+panelHeight: '30vh',
+openOnInit: true
+```
+
+---
+
+### 🔹 group-navigator.js
+フォームのグループから“ミニ目次”を生成するUI
 
 #### 📌 使い所
 - 長いフォームでスクロールが大変
