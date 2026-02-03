@@ -21,6 +21,8 @@ kintone の「JavaScript / CSS カスタマイズ」にそのまま登録して�
 | `normalize-fields.js`            | 保存時に半角英数字へ整形                        | 電話番号・郵便番号整形      |
 | `auto-number-on-save.js`         | レコード保存時に自動採番                        | 見積番号/伝票番号生成      |
 | `subtable-lookup-selector.js`    | ボタン選択でサブテーブルへ行追加＋ルックアップ自動取得      | 候補選択 UI の構築       |
+| `hide-fields-by-condition.js`       | 条件付きフィールド非表示（ステータス／値で制御）         | 表示制御・権限制御       |
+| `disable-fields-by-condition.js`    | 条件付きフィールド編集不可（入力ロック）              | 操作制御・誤操作防止     |
 
 ### 🟧 表示改善・ナビゲーション（UI / UX）
 
@@ -367,4 +369,66 @@ const CONFIG = {
   // 未入力・未定義時に表示するグループ（不要なら null）
   DEFAULT_GROUP: null
 };
+```
+
+---
+
+### 🔹 hide-fields-by-condition.js
+
+条件に応じてフィールドやグループを「非表示」にするテンプレート
+
+#### 📌 使い所
+- ステータスによって入力フォームを出し分けたい
+- 特定条件のときだけ項目を見せたくない
+- グループ単位でまとめて隠したい
+
+#### 🧠 特徴
+- ステータス（プロセス管理）で制御可能
+- フィールド値による条件分岐に対応
+- AND / OR 条件の組み合わせ可
+- setFieldShown のみを扱う 表示専用ロジック
+
+#### 🛠 CONFIG例
+```js
+rules: [
+  {
+    when: { statusIn: ['確認中'] },
+    hide: ['GRP_BASIC', 'ADDR1']
+  },
+  {
+    when: { fieldEq: { code: 'CATEGORY', value: '社内' } },
+    hide: ['TEL1']
+  }
+]
+```
+
+---
+
+### 🔹 disable-fields-by-condition.js
+
+条件に応じてフィールドを「編集不可（disabled）」にするテンプレート
+
+#### 📌 使い所
+- 変更されたくない項目をロックしたい
+- ステータスが進んだら編集不可にしたい
+- create / edit 画面だけ入力制御したい
+
+#### 🧠 特徴
+- create / edit 画面専用
+- ステータス・フィールド値で制御可能
+- 表示制御とは完全に分離した設計
+- record[field].disabled のみを扱う 入力制御専用ロジック
+
+#### 🛠 CONFIG例
+```js
+rules: [
+  {
+    when: { always: true },
+    disable: ['KOKCD']
+  },
+  {
+    when: { statusIn: ['確認中'] },
+    disable: ['ADDR1', 'ADDR2']
+  }
+]
 ```
