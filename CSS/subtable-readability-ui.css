@@ -1,0 +1,104 @@
+/* =========================
+   kintone Subtable Readability UI (show + edit)
+   - header強調 / zebra / hover / 余白 / 罫線
+   - operation列（編集の＋/削除）も整える
+   ========================= */
+
+/* サブテーブルの“塊感” */
+.subtable-row-gaia {
+    margin-top: 10px !important;
+}
+
+/* =========================
+   Subtable Label Enhancement
+   - グループより弱く
+   ========================= */
+
+.subtable-row-label-text-gaia {
+    margin-top: 10px;
+    font-size: 14px !important;
+    color: #24324a !important;
+    display: inline-block !important;
+}
+
+/* テーブル枠：カード調に */
+.subtable-gaia {
+    border: 1px solid #e5e9f2 !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    /* 角丸を効かせる */
+    background: #fff !important;
+}
+
+/* ヘッダー（通常列） */
+.subtable-gaia thead th.subtable-label-gaia {
+    border-bottom: 1px solid #e5e9f2 !important;
+    font-weight: 700 !important;
+    padding: 6px 6px !important;
+    white-space: nowrap !important;
+}
+
+/* ヘッダー（operation列）: th自体にクラスが付くパターンも拾う */
+.subtable-gaia thead th.subtable-operation-gaia,
+.subtable-gaia thead .subtable-operation-gaia {
+    border-bottom: 1px solid #e5e9f2 !important;
+}
+
+/* ヘッダー文字：少し詰めて視認性UP */
+.subtable-gaia .subtable-label-inner-gaia {
+    letter-spacing: .02em !important;
+}
+
+/* ボディ（通常セル） */
+.subtable-gaia tbody td {
+    padding: 6px 6px !important;
+    border-bottom: 1px solid #eef2f7 !important;
+    vertical-align: middle !important;
+}
+
+/* ボディ（operation列）: tdに付く/中に入る両方に対応 */
+.subtable-gaia tbody td.subtable-operation-gaia,
+.subtable-gaia tbody td .subtable-operation-gaia {
+    padding: 6px 6px !important;
+    border-bottom: 1px solid #eef2f7 !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+}
+
+/* 値表示：行間を少し広げる（文字が窮屈） */
+.subtable-gaia .control-value-gaia,
+.subtable-gaia .control-value-content-gaia {
+    line-height: 1.4 !important;
+}
+
+/* ゼブラ：行の境界が一瞬で分かる */
+.subtable-gaia tbody tr:nth-child(even) {
+    background: #fbfcff !important;
+}
+
+/* ホバー：今見ている行を見失わない */
+.subtable-gaia tbody tr:hover {
+    background: #eef5ff !important;
+}
+
+/* 「作業時間」など数値列：桁揃えで見やすく */
+.subtable-gaia .control-decimal-field-gaia .control-value-gaia {
+    font-variant-numeric: tabular-nums !important;
+}
+
+/* operation列のボタン類が小さくて押しにくい場合（編集画面だけ効く想定） */
+.subtable-gaia .subtable-operation-gaia button,
+.subtable-gaia .subtable-operation-gaia a {
+    min-height: 28px !important;
+}
+
+.subtable-gaia thead th.subtable-operation-gaia,
+.subtable-gaia tbody td.subtable-operation-gaia {
+    border-left: 2px solid #e5e9f2 !important;
+}
+
+/* 1列目の内容を少し強調（行が読みやすくなる） */
+.subtable-gaia tbody tr td:first-child .control-value-content-gaia {
+    font-weight: 600 !important;
+    color: #1f2a44 !important;
+}
