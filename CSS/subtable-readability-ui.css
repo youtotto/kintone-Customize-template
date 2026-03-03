@@ -102,3 +102,27 @@
     font-weight: 600 !important;
     color: #1f2a44 !important;
 }
+
+/* =========================
+   Operation列 右固定（コメントバー対策）
+   ========================= */
+
+.subtable-gaia thead th.subtable-operation-gaia,
+.subtable-gaia tbody td.subtable-operation-gaia {
+  position: sticky !important;
+  right: 0 !important;
+  z-index: 2 !important;
+}
+
+/* ヘッダーは一段上 */
+.subtable-gaia thead th.subtable-operation-gaia {
+  z-index: 3 !important;
+}
+
+/* 子要素にクラスが付いているパターンの保険 */
+.subtable-gaia tbody td .subtable-operation-gaia {
+  position: sticky !important;
+  right: 0 !important;
+  background: #fff !important;
+  z-index: 2 !important;
+}
