@@ -11,13 +11,14 @@
 .control-group-gaia {
   position: relative !important;
   margin: 18px 0 !important;
-  padding: 18px 18px 14px 22px !important; /* 左だけ少し余白＝アクセントバー分 */
+  padding: 18px 18px 14px 22px !important;
+  /* 左だけ少し余白＝アクセントバー分 */
   border-radius: 14px;
   border: 1px solid #e5e9f2;
   background: #fff;
   box-shadow:
-    0 1px 0 rgba(0,0,0,.02),
-    0 8px 24px rgba(0,0,0,.04);
+    0 1px 0 rgba(0, 0, 0, .02),
+    0 8px 24px rgba(0, 0, 0, .04);
   transition: box-shadow .2s ease;
 }
 
@@ -36,11 +37,35 @@
 /* ホバー時に少し浮かせる */
 .control-group-gaia:hover {
   box-shadow:
-    0 2px 4px rgba(0,0,0,.04),
-    0 12px 28px rgba(0,0,0,.06);
+    0 2px 4px rgba(0, 0, 0, .04),
+    0 12px 28px rgba(0, 0, 0, .06);
 }
 
 /* フィールド間の余白を少し整える */
 .control-group-gaia .control-gaia {
   margin-top: 8px;
+}
+
+/* =========================
+   Operation列 右固定（コメントバー対策）
+   ========================= */
+
+.subtable-gaia thead th.subtable-operation-gaia,
+.subtable-gaia tbody td.subtable-operation-gaia {
+  position: sticky !important;
+  right: 0 !important;
+  z-index: 2 !important;
+}
+
+/* ヘッダーは一段上 */
+.subtable-gaia thead th.subtable-operation-gaia {
+  z-index: 3 !important;
+}
+
+/* 子要素にクラスが付いているパターンの保険 */
+.subtable-gaia tbody td .subtable-operation-gaia {
+  position: sticky !important;
+  right: 0 !important;
+  background: #fff !important;
+  z-index: 2 !important;
 }
